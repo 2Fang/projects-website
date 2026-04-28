@@ -12,7 +12,7 @@ function ProjectList({ projects }) {
             title={project.title}
             description={project.description}
             techTags={project.techTags}
-            links={project.links}
+            slug={project.slug}
           />
         ))}
       </div>
