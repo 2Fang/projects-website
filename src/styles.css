@@ -1,4 +1,6 @@
 :root {
+  --page-width: 1180px;
+  --reading-width: 760px;
   --bg: #f6f3ee;
   --bg-soft: #ffffff;
   --bg-hero: linear-gradient(135deg, #fffaf0 0%, #eef6f3 100%);
@@ -55,7 +57,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 24px max(24px, calc((100vw - 1040px) / 2));
+  padding: 24px max(24px, calc((100vw - var(--page-width)) / 2));
   background: color-mix(in srgb, var(--bg-soft) 92%, transparent);
   border-bottom: 1px solid var(--border);
 }
@@ -124,7 +126,7 @@ a {
 }
 
 .page-content {
-  width: min(1040px, calc(100% - 48px));
+  width: min(var(--page-width), calc(100% - 48px));
   margin: 0 auto;
   padding: 40px 0 72px;
 }
@@ -148,14 +150,14 @@ a {
 }
 
 .hero-section h2 {
-  max-width: 760px;
+  max-width: min(100%, 880px);
   margin: 0;
   font-size: clamp(2.5rem, 6vw, 4.7rem);
   line-height: 0.98;
 }
 
 .hero-section p:not(.hero-eyebrow) {
-  max-width: 640px;
+  max-width: min(100%, 680px);
   margin: 22px 0 0;
   color: var(--text-muted);
   font-size: 1.15rem;
@@ -201,7 +203,7 @@ a {
 }
 
 .summary-section p {
-  max-width: 760px;
+  max-width: min(100%, var(--reading-width));
   margin: 0;
   color: var(--text-muted);
   font-size: 1.04rem;
@@ -297,17 +299,19 @@ a {
 .project-detail {
   display: grid;
   gap: 20px;
-  max-width: 760px;
+  max-width: 100%;
   padding: 20px 0 0;
 }
 
 .project-detail h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.4rem);
+  max-width: 100%;
+  font-size: clamp(2.25rem, 5vw, 4rem);
   line-height: 1.05;
 }
 
 .project-detail p:not(.hero-eyebrow) {
+  max-width: min(100%, var(--reading-width));
   margin: 0;
   color: var(--text-muted);
   font-size: 1.08rem;
@@ -340,7 +344,7 @@ a {
   }
 
   .page-content {
-    width: min(100% - 32px, 1040px);
+    width: min(100% - 32px, var(--page-width));
     padding: 28px 0 56px;
   }
 
@@ -351,6 +355,10 @@ a {
 
   .hero-section h2 {
     font-size: 2.45rem;
+  }
+
+  .project-detail h2 {
+    font-size: clamp(2rem, 12vw, 2.8rem);
   }
 
   .button,
