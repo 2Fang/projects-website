@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import Header from "./components/Header.jsx";
+import Hero from "./components/Hero.jsx";
 import ProjectList from "./components/ProjectList.jsx";
 import Summary from "./components/Summary.jsx";
 
@@ -6,28 +8,60 @@ const projects = [
   {
     title: "Project A",
     description:
-      "Some description about the project will go here. This can later include the goal, tech used, and what makes the project worth clicking into.",
-    imageAlt: "Placeholder project image"
+      "A placeholder project card for the portfolio. This will later describe the goal, the build process, and the outcome.",
+    techTags: ["React", "CSS", "Node"],
+    links: [
+      {
+        label: "Details",
+        href: "#"
+      }
+    ]
   },
   {
     title: "Project B",
     description:
-      "Some description about the project will go here. This can later include the goal, tech used, and what makes the project worth clicking into.",
-    imageAlt: "Placeholder project image"
+      "A second example card to shape the project list and test how repeated entries feel on the page.",
+    techTags: ["JavaScript", "API"],
+    links: []
   },
   {
     title: "Project C",
     description:
-      "Some description about the project will go here. This can later include the goal, tech used, and what makes the project worth clicking into.",
-    imageAlt: "Placeholder project image"
-  },
+      "An older placeholder project, ready to become a real case study once the portfolio content is added.",
+    techTags: ["HTML", "CSS"],
+    links: []
+  }
 ];
 
+function getInitialTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light" || savedTheme === "dark") {
+    return savedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  function toggleTheme() {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  }
+
   return (
     <>
-      <Header />
+      <Header theme={theme} onToggleTheme={toggleTheme} />
       <main className="page-content">
+        <Hero />
         <Summary />
         <ProjectList projects={projects} />
       </main>

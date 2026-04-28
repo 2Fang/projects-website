@@ -1,83 +1,296 @@
+:root {
+  --bg: #f6f3ee;
+  --bg-soft: #ffffff;
+  --bg-hero: linear-gradient(135deg, #fffaf0 0%, #eef6f3 100%);
+  --text: #15171a;
+  --text-muted: #5b626b;
+  --border: #ddd7cf;
+  --accent: #2f6f67;
+  --accent-strong: #255a53;
+  --accent-soft: #dcece8;
+  --shadow: 0 14px 34px rgba(30, 38, 45, 0.1);
+  --shadow-hover: 0 20px 44px rgba(30, 38, 45, 0.16);
+}
+
+:root[data-theme="dark"] {
+  --bg: #111315;
+  --bg-soft: #1a1d20;
+  --bg-hero: linear-gradient(135deg, #1d2324 0%, #15191f 100%);
+  --text: #f3f0ea;
+  --text-muted: #b7b0a6;
+  --border: #2e3438;
+  --accent: #8fd4c8;
+  --accent-strong: #b6eee5;
+  --accent-soft: #203a37;
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  --shadow-hover: 0 20px 44px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #111;
+  font-family:
+    "Aptos", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+a {
+  color: inherit;
 }
 
 .site-header {
-  padding: 32px 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px max(24px, calc((100vw - 1040px) / 2));
+  background: color-mix(in srgb, var(--bg-soft) 92%, transparent);
+  border-bottom: 1px solid var(--border);
 }
 
 .site-header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.theme-toggle,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.theme-toggle {
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.button:hover {
+  transform: translateY(-2px);
 }
 
 .page-content {
-  width: min(960px, calc(100% - 48px));
+  width: min(1040px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 0 72px;
+}
+
+.hero-section {
+  padding: 64px;
+  margin-bottom: 56px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--bg-hero);
+  box-shadow: var(--shadow);
+}
+
+.hero-eyebrow {
+  margin: 0 0 16px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-section h2 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.7rem);
+  line-height: 0.98;
+}
+
+.hero-section p:not(.hero-eyebrow) {
+  max-width: 640px;
+  margin: 22px 0 0;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.button {
+  padding: 0 20px;
+  border: 1px solid transparent;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: var(--bg-soft);
+}
+
+.button-primary:hover {
+  background: var(--accent-strong);
+}
+
+.button-secondary {
+  border-color: var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
 }
 
 .summary-section,
 .projects-section {
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .summary-section h2,
 .projects-section h2 {
   margin: 0 0 16px;
-  font-size: 1.5rem;
+  font-size: 1.65rem;
 }
 
 .summary-section p {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
+  color: var(--text-muted);
+  font-size: 1.04rem;
+  line-height: 1.75;
 }
 
 .project-list {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
 .project-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  gap: 22px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg-soft);
+  box-shadow: var(--shadow);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: var(--shadow-hover);
+}
+
+.project-card-content {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  padding: 20px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  gap: 12px;
 }
 
-.project-image {
-  min-height: 140px;
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0)),
-    #cfcfcf;
-}
-
-.project-details h3 {
-  margin: 0 0 8px;
-  font-size: 1.25rem;
-}
-
-.project-details p {
+.project-card h3 {
   margin: 0;
-  line-height: 1.6;
+  font-size: 1.3rem;
 }
 
-@media (max-width: 640px) {
-  .page-content {
-    width: min(100% - 32px, 960px);
-    padding: 32px 0;
+.project-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: auto 0 0;
+  list-style: none;
+}
+
+.tech-tags li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-links a {
+  color: var(--accent-strong);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .project-list {
+    grid-template-columns: 1fr;
   }
 
   .project-card {
-    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-content {
+    width: min(100% - 32px, 1040px);
+    padding: 28px 0 56px;
+  }
+
+  .hero-section {
+    padding: 36px 24px;
+    border-radius: 20px;
+  }
+
+  .hero-section h2 {
+    font-size: 2.45rem;
+  }
+
+  .button,
+  .theme-toggle {
+    width: 100%;
   }
 }
