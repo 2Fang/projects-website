@@ -38,11 +38,11 @@ const projects = [
               {
                 id: "problem",
                 content: {
-                  type: "text",
-                  heading: "Problem",
-                  paragraphs: [
-                    "A compact block for the problem statement, design constraints, or a supporting visual later on."
-                  ]
+                  type: "image",
+                  src: "/project-placeholders/interface-preview.png",
+                  alt: "Placeholder interface preview for Project A",
+                  caption: "Interface preview placeholder",
+                  aspectRatio: "4 / 3"
                 }
               },
               {
@@ -63,11 +63,11 @@ const projects = [
           column: "2",
           row: "2",
           content: {
-            type: "text",
-            heading: "Outcome",
-            paragraphs: [
-              "Use this area for metrics, lessons, links, or follow-up work once the real project write-up is ready."
-            ]
+            type: "image",
+            src: "/project-placeholders/results-panel.png",
+            alt: "Placeholder results panel for Project A",
+            caption: "Results panel placeholder",
+            aspectRatio: "16 / 9"
           }
         },
         {
@@ -139,11 +139,11 @@ const projects = [
         {
           id: "notes",
           content: {
-            type: "text",
-            heading: "Notes",
-            paragraphs: [
-              "Swap the fractions to change emphasis, or nest another grid here when the page needs more structure."
-            ]
+            type: "image",
+            src: "/project-placeholders/api-flow.png",
+            alt: "Placeholder API flow diagram for Project B",
+            caption: "API flow placeholder",
+            aspectRatio: "1 / 1"
           }
         }
       ]
@@ -164,10 +164,30 @@ const projects = [
         {
           id: "writeup",
           content: {
-            type: "text",
-            heading: "Write-up",
-            paragraphs: [
-              "A single-column project can use the same renderer. Add columns, row spans, or nested grids later without changing the page component."
+            type: "grid",
+            columns: ["1fr", "1fr"],
+            gap: "24px",
+            items: [
+              {
+                id: "notes",
+                content: {
+                  type: "text",
+                  heading: "Write-up",
+                  paragraphs: [
+                    "A single-column project can use the same renderer. Add columns, row spans, or nested grids later without changing the page component."
+                  ]
+                }
+              },
+              {
+                id: "preview",
+                content: {
+                  type: "image",
+                  src: "/project-placeholders/static-page.png",
+                  alt: "Placeholder static page preview for Project C",
+                  caption: "Static page placeholder",
+                  aspectRatio: "16 / 10"
+                }
+              }
             ]
           }
         }

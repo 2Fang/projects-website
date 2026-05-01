@@ -360,6 +360,29 @@ a {
   line-height: 1.75;
 }
 
+.project-image-block {
+  display: grid;
+  gap: 10px;
+  min-height: 100%;
+  margin: 0;
+}
+
+.project-image-block img {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--image-ratio);
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-soft);
+}
+
+.project-image-block figcaption {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 860px) {
   .project-list {
     grid-template-columns: 1fr;

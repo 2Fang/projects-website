@@ -11,6 +11,15 @@ function TextBlock({ heading, paragraphs = [] }) {
   );
 }
 
+function ImageBlock({ src, alt, caption, aspectRatio = "16 / 10" }) {
+  return (
+    <figure className="project-image-block" style={{ "--image-ratio": aspectRatio }}>
+      <img src={src} alt={alt} />
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
+  );
+}
+
 function renderContentNode(node) {
   if (node.type === "grid") {
     return (
@@ -35,6 +44,17 @@ function renderContentNode(node) {
 
   if (node.type === "text") {
     return <TextBlock heading={node.heading} paragraphs={node.paragraphs} />;
+  }
+
+  if (node.type === "image") {
+    return (
+      <ImageBlock
+        src={node.src}
+        alt={node.alt}
+        caption={node.caption}
+        aspectRatio={node.aspectRatio}
+      />
+    );
   }
 
   return null;
