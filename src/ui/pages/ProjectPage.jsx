@@ -1,3 +1,5 @@
+import ProjectContent from "../components/ProjectContent.jsx";
+
 function ProjectPage({ project }) {
   return (
     <section className="project-detail">
@@ -12,7 +14,7 @@ function ProjectPage({ project }) {
         </ul>
       )}
 
-      <p>{project.description}</p>
+      <ProjectContent layout={project.contentLayout} />
 
       <a className="button button-secondary" href="/">
         Back Home

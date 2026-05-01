@@ -310,7 +310,7 @@ a {
   line-height: 1.05;
 }
 
-.project-detail p:not(.hero-eyebrow) {
+.project-detail > p:not(.hero-eyebrow) {
   max-width: min(100%, var(--reading-width));
   margin: 0;
   color: var(--text-muted);
@@ -322,6 +322,44 @@ a {
   justify-self: start;
 }
 
+.project-content-layout {
+  margin-top: 12px;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  grid-template-rows: var(--grid-rows);
+  gap: var(--grid-gap);
+  min-width: 0;
+}
+
+.layout-grid-item {
+  min-width: 0;
+}
+
+.project-content-block {
+  display: grid;
+  gap: 12px;
+  min-height: 100%;
+  padding: 18px 0 20px;
+  border-top: 1px solid var(--border);
+}
+
+.project-content-block h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.project-content-block p {
+  max-width: min(100%, var(--reading-width));
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
 @media (max-width: 860px) {
   .project-list {
     grid-template-columns: 1fr;
@@ -329,6 +367,18 @@ a {
 
   .project-card {
     min-height: auto;
+  }
+
+  .layout-grid.stack-tablet,
+  .layout-grid.stack-mobile {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  .layout-grid.stack-tablet > .layout-grid-item,
+  .layout-grid.stack-mobile > .layout-grid-item {
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 }
 
@@ -359,6 +409,16 @@ a {
 
   .project-detail h2 {
     font-size: clamp(2rem, 12vw, 2.8rem);
+  }
+
+  .layout-grid.stack-mobile {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  .layout-grid.stack-mobile > .layout-grid-item {
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 
   .button,
