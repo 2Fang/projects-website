@@ -1,6 +1,10 @@
-function ProjectCard({ title, description, techTags = [], links = [] }) {
+function ProjectCard({ title, description, techTags = [], slug }) {
   return (
-    <article className="project-card">
+    <a
+      className="project-card"
+      href={`/projects/${slug}`}
+      aria-label={`View ${title}`}
+    >
       <div className="project-card-content">
         <h3>{title}</h3>
         <p>{description}</p>
@@ -14,16 +18,8 @@ function ProjectCard({ title, description, techTags = [], links = [] }) {
         </ul>
       )}
 
-      {links.length > 0 && (
-        <div className="project-links">
-          {links.map((link) => (
-            <a key={link.label} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
-    </article>
+      <span className="project-card-cta">View project</span>
+    </a>
   );
 }
 

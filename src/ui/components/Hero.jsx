@@ -8,7 +8,7 @@ function Hero() {
         make software easier to understand and use.
       </p>
       <div className="hero-actions" aria-label="Portfolio actions">
-        <a className="button button-primary" href="#projects">
+        <a className="button button-primary" href="/#projects">
           View Projects
         </a>
         <a className="button button-secondary" href="mailto:hello@example.com">
