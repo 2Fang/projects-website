@@ -351,6 +351,104 @@ const projects = [
     links: []
   },
   {
+    title: "DoLS Form QA",
+    slug: "dols-form-qa",
+    description:
+      "A commissioned tool that audits statutory care assessments for contradictions living pages apart, using a segmented analysis pipeline that carries a running fact ledger across the whole document.",
+    techTags: ["Python", "OpenAI API", "PyPDF2", "Tkinter", "PyInstaller"],
+    tags: ["Client Work", "AI"],
+    startDate: "2025-06-28",
+    lastUpdated: "2025-07-08",
+    timeframe: "Commissioned · 2025",
+    contentLayout: {
+      type: "grid",
+      columns: ["1.4fr", "1fr"],
+      gap: "28px",
+      stackAt: "tablet",
+      items: [
+        {
+          id: "overview",
+          content: {
+            type: "text",
+            heading: "Contradictions live pages apart",
+            paragraphs: [
+              "A DoLS assessment — the statutory paperwork authorising a deprivation of liberty in a care setting — runs to roughly eighteen pages of narrative, tick boxes and transcribed conversation. The errors that matter in one are almost never local. A care home is named on page three and named differently on page nineteen. An assessor's prose describes someone as retaining information while the capacity boxes beside it record the opposite. An advocacy referral is asserted in one section and absent from the conversation twenty pages away that should evidence it. A spellchecker sees none of this.",
+              "The client was catching these by hand. The tool reads a completed form and returns the issues it finds: page number, the offending quote, what is wrong with it.",
+              "The obvious approach defeats itself. Chunk the document to fit the model and every cross-page contradiction vanishes with the boundary you drew — the signal you are looking for is exactly the one chunking destroys. The whole design is an answer to that."
+            ]
+          }
+        },
+        {
+          id: "side",
+          content: {
+            type: "grid",
+            columns: "1fr",
+            rows: ["auto", "auto"],
+            gap: "20px",
+            items: [
+              {
+                id: "ablation",
+                content: {
+                  type: "text",
+                  heading: "Tuned by ablation",
+                  paragraphs: [
+                    "Six builds over two weeks, varying two things independently: the model behind the analysis stage, and whether the fact ledger was switched on. Three model tiers, each with and without notes, converging on the strongest pairing. The segmentation model stayed the cheap one throughout — only the reasoning stage was ever escalated."
+                  ]
+                }
+              },
+              {
+                id: "handover",
+                content: {
+                  type: "text",
+                  heading: "Handed over as a tool",
+                  paragraphs: [
+                    "It ships as a single Windows executable: no Python, no install, no command line. The domain rulebook sits beside it as plain text rather than compiled in, so the compliance checks can be extended without a rebuild and without me. That was deliberate — the expertise in this project is the rule set, and the rule set belongs with the client."
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          id: "ledger",
+          column: "1 / -1",
+          content: {
+            type: "grid",
+            columns: ["1.45fr", "1fr"],
+            gap: "26px",
+            stackAt: "tablet",
+            items: [
+              {
+                id: "ledger-text",
+                content: {
+                  type: "text",
+                  heading: "A fact ledger that survives the document",
+                  paragraphs: [
+                    "Segmentation is itself a model call rather than a fixed page count. A cheap model reads the whole form and proposes five to eight boundaries at logical content breaks, so a capacity assessment never gets sliced across two requests. Planning the expensive work with a cheaper model keeps the cost on the stage that actually needs the reasoning.",
+                    "Analysis then runs as one continuous conversation rather than six independent calls — each segment and each reply stays in view, so the last is read with all five before it still present. On its own that dilutes: by the final segment, the one fact that matters, the care home named back on page three, is buried under five prior documents and five prior issue lists.",
+                    "So every reply ends with a sentinel line followed by the new facts that segment taught it — names, dates, impairments, medication, representatives. The client code splits on that sentinel, shows the user only the issues, and diverts the facts into a running ledger that is re-injected at the top of the next segment's prompt. It is a hand-rolled structured-output channel over a plain text response, and it gives every segment a compact, always-salient summary of every claim the form has made so far, sitting where the model will attend to it instead of decaying somewhere in the middle of the history. The model keeps its own notes; the user never sees the plumbing.",
+                          "The next phase is the segmentation contract. The boundary reply is currently parsed by its text shape; moving it to a structured schema response and adding page-coverage validation would make it provable that every page of a form reached the analyser."
+                        ]
+                      }
+                    },
+                    {
+                      id: "ledger-shot",
+                      content: {
+                        type: "image",
+                        src: "/project-images/dols-form-qa/analysis-output.png",
+                        alt: "The desktop app's results pane listing issues found in a form, each with a page number, the quoted text and a note on what is wrong",
+                        caption: "Issues from a synthetic form. The middle finding spans pages 1-3 — the kind of catch a per-page pass cannot make.",
+                        aspectRatio: "545 / 434"
+                      }
+                    }
+                  ]
+          }
+        }
+      ]
+    },
+    links: []
+  },
+  {
     title: "Brawlytics",
     slug: "brawlytics",
     description:
