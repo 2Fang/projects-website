@@ -10,3 +10,4 @@ private/
 .specify/
 specs/
 CLAUDE.md
+.wrangler/
