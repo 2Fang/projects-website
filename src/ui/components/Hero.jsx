@@ -11,7 +11,7 @@ function Hero() {
         <a className="button button-primary" href="/#projects">
           View Projects
         </a>
-        <a className="button button-secondary" href="mailto:hello@example.com">
+        <a className="button button-secondary" href="mailto:shayansadjady21@gmail.com">
           Contact Me
         </a>
       </div>

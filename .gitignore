@@ -4,4 +4,9 @@ dist/
 build/
 coverage/
 *.log
-
+private/
+.DS_Store
+.claude/
+.specify/
+specs/
+CLAUDE.md
