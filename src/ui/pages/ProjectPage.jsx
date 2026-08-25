@@ -5,6 +5,7 @@ function ProjectPage({ project }) {
     <section className="project-detail">
       <p className="hero-eyebrow">Project</p>
       <h2>{project.title}</h2>
+      <p className="project-timeframe">{project.timeframe}</p>
 
       {project.techTags.length > 0 && (
         <ul className="tech-tags" aria-label={`${project.title} technologies`}>
@@ -12,6 +13,16 @@ function ProjectPage({ project }) {
             <li key={tag}>{tag}</li>
           ))}
         </ul>
+      )}
+
+      {project.links.length > 0 && (
+        <div className="project-links">
+          {project.links.map((link) => (
+            <a key={link.href} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </div>
       )}
 
       <ProjectContent layout={project.contentLayout} />
